@@ -9,22 +9,21 @@
         <session-timeout>60</session-timeout>
     </session-config>
 
-    <jsp-config>
+<!--    <jsp-config>
         <jsp-property-group>
             <url-pattern>*.jsp</url-pattern>
             <page-encoding>UTF-8</page-encoding>
         </jsp-property-group>
-    </jsp-config>
+    </jsp-config>-->
 
 
 
    <!-- <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath*:/spring/*-context.xml
+            classpath*:/*-context.xml
         </param-value>
     </context-param>-->
-
 
     <filter>
         <filter-name>springCharsetForceFilter</filter-name>
@@ -50,6 +49,11 @@
     <servlet-mapping>
         <servlet-name>harvester</servlet-name>
         <url-pattern>*.page</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>harvester</servlet-name>
+        <url-pattern>*.data</url-pattern>
     </servlet-mapping>
 
     <!-- Serves static content. -->
