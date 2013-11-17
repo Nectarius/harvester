@@ -1,13 +1,20 @@
 
-var wordsBinding = function(wordList){
-    ko.applyBindings({
-        words: wordList
-          //  [
-          //  { word: 'Bert', translate: 'Bertington' , whence: 'game of thrones' , priority : '1' },
-         //   { word: 'Bert', translate: 'Bertington' , whence: 'game of thrones' , priority : '2' }
-       // ]
-    });
+
+var AppViewModel = function (wordList) {
+    var self = this;
+
+    self.words = ko.observableArray(wordList);
+
+    self.addWord = function() {
+        self.words.push({ word: 'test', translate: 'test t' , whence: 'game of thrones' , priority : '1' });
+    };
+
+    self.removeWord = function() {
+        self.words.remove(this);
+    }
 }
+
+
 
 var loadWordList = function() {
     $.ajax({
@@ -18,7 +25,7 @@ var loadWordList = function() {
         contentType: "application/json",
         success: function(data) {
             console.log("words coming ...");
-            wordsBinding(data);
+            ko.applyBindings(new AppViewModel(data));
          /*   $.each(data.dashboard, function(i,post){
                 $('#tabPanelWrapper').append('<ul><li>' + data.id + '</li><li>' + data.name +'</li></ul>');
             });*/
@@ -27,6 +34,8 @@ var loadWordList = function() {
             console.log(xhr.status);
         }
     });
+
+
 }
 
 loadWordList();

@@ -29,6 +29,7 @@
     </div>--%>
 
     <!-- Table -->
+    <div class="panel-body">
     <table class="table table-striped" >
         <thead>
         <tr><th>Слово</th><th>Перевод</th><th>Источник</th><th>Приоритет</th></tr>
@@ -43,11 +44,11 @@
         </tbody>
     </table>
 
-    <div class="pull-right">
-    <button type="submit"  class="btn btn-success"
-            > <i class="icon-user icon-white"></i> new word</button>
-        </div>
 
+    <div class="pull-right">
+        <button class="btn btn-success" data-bind="click: addWord ">new word</button>
+    </div>
+    </div>
 </div>
 
 <script src="assets/harvester.js"></script>
