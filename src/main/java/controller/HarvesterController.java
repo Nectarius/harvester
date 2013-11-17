@@ -28,7 +28,6 @@ public class HarvesterController  {
 
     @RequestMapping(value = "harvester.page", method = RequestMethod.GET)
     public String chart() {
-
         return "harvester";
     }
 
