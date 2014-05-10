@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.*;
 import service.GuestService;
 import view.PageGuestView;
 import view.PlainGuestView;
-import view.PlainWordView;
 
-import java.util.List;
+import javax.validation.Valid;
 
 /**
  * Created by nectarius on 11/16/13.

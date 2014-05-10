@@ -51,7 +51,7 @@
     </div>
 </div>
 
-<script src="assets/harvester.js"></script>
+<script src="harvester.js"></script>
 
 </body>
 </html>

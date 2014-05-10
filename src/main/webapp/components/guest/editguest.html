@@ -1,0 +1,22 @@
+<div class="panel panel-default container " ng-controller="guestlist" xmlns:guest="http://evelopes.org/guest">
+
+    <div class="panel-heading ">Редактирование сотрудника</div>
+
+    <div class="panel-body">
+
+        <guest:widget model="guest"></guest:widget>
+
+        <div >
+
+            <a href="#/guestlist" >Вернуться к списку</a>
+
+        </div>
+
+        <div class=" pull-right">
+
+            <button class="btn btn-success" ng-click="save(guest)">Принять</button>
+
+        </div>
+
+    </div>
+</div>

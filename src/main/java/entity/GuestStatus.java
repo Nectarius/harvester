@@ -7,6 +7,7 @@ public enum GuestStatus {
 
     PROMISED,
     NOT_YET_DECIDED,
-    UNLIKELY
+    UNLIKELY,
+    REMOVED
 
 }
