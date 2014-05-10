@@ -16,8 +16,6 @@
         </jsp-property-group>
     </jsp-config>
 
-
-
    <!-- <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
