@@ -1,0 +1,27 @@
+git clone git@heroku.com:velvet-harvester.git -o heroku
+
+
+http://velvet-harvester.herokuapp.com/
+
+heroku keys:add 
+
+heroku keys:add ~/.ssh/id_rsa.pub
+
+
+Push an existing repository from the command line
+
+git remote add origin https://github.com/Nectarius/harvester.git
+git push -u origin master
+
+git remote set-url origin git://new.url.here
+
+
+Host	ec2-54-247-78-153.eu-west-1.compute.amazonaws.com
+Database	d8562gpmriu22j
+User	fsjdlxcsdkbpvt
+Port	5432
+Password	Show
+
+about deploy war
+
+https://devcenter.heroku.com/articles/war-deployment

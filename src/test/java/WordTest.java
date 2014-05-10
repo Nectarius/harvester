@@ -1,9 +1,11 @@
+import entity.Guest;
 import entity.Word;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import repository.GuestRepository;
 import repository.WordRepository;
 
 import java.util.List;
@@ -16,7 +18,7 @@ import java.util.List;
 public class WordTest {
 
     @Autowired
-    private WordRepository wordRepository;
+    private GuestRepository guestRepository;
 
    /* @Test
     public void test(){
@@ -36,13 +38,11 @@ public class WordTest {
    @Test
    public void test(){
 
-     List<Word> wordList = wordRepository.findAll();
+     List<Guest> guestList = guestRepository.findAll();
 
-       for(Word word: wordList){
-           System.out.println("word : "+word.getWord());
-           System.out.println("translate : "+word.getTranslate());
-           System.out.println("whence : "+word.getWhence());
-           System.out.println("priority : "+word.getPriority());
+       for(Guest guest: guestList){
+           System.out.println("name : "+ guest.getName());
+           System.out.println("status : "+guest.getStatus());
        }
 
 
