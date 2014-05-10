@@ -1,6 +1,6 @@
 <div class="panel panel-default container " ng-controller="guestlist" xmlns:ng="http://angularjs.org">
 
-    <div class="panel-heading ">Перечень сотрудников</div>
+    <div class="panel-heading ">Посетители </div>
 
     <div class="panel-body">
         <table class="table table-striped">
@@ -8,7 +8,8 @@
             <tr>
                 <th ng:class="isActiveColumn('name')" ng:click="changeSorting('name')">Имя</th>
                 <th ng:class="isActiveColumn('surname')" ng:click="changeSorting('surname')">Фамилия</th>
-                <th ng:class=" isActiveColumn('salary')" ng:click="changeSorting('salary')">Зарплата</th>
+                <th ng:class=" isActiveColumn('status')" ng:click="changeSorting('status')">Статус</th>
+                <th ng:class=" isActiveColumn('description')" ng:click="changeSorting('description')">Комментарий</th>
             </tr>
             </thead>
             <tbody>
@@ -18,7 +19,9 @@
                 </a></td>
 
                 <td>{{item.surname}}</td>
-                <td>{{item.salary}}</td>
+                <td ng:class="setStatusIcon(item.status)"></td>
+                <td>{{item.description}}</td>
+
                 <td>
                     <button ng-click="removeguest({{ item.id }})" class="btn btn-danger">Удалить</button>
                 </td>

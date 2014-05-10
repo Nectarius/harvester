@@ -8,6 +8,19 @@
     <input type="text" class="form-control " placeholder="Фамилия" ng-model="model.surname" required>
 </div>
 </p>
+<div class="input-group input-group-lg ">
+    <span class="input-group-addon eLabel">Статус</span>
+    <select class="form-control " ng-model="model.status" ng-options="color.name for color in model.statusList"></select>
+    <!--<input type="text" class="form-control " placeholder="Статус" ng-model="model.status" required>-->
+</div>
+</p>
+<div class="input-group input-group-lg ">
+    <span class="input-group-addon eLabel">Комментарий</span>
+    <input type="text" class="form-control " placeholder="Комментарий" ng-model="model.description" required>
+</div>
+</p>
+
+
 
 
 

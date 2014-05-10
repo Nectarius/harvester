@@ -6,11 +6,28 @@ angular.module('editguest', ['ngResource','guest'])
 
         $scope.guest = {};
 
+        $scope.guest.statusList = [
+            {name:'Видимо да', value:'PROMISED'},
+            {name:'Не определился', value:'NOT_YET_DECIDED'},
+            {name:'Маловероятно', value:'UNLIKELY'}
+        ];
+
+        function findStatus(value){
+            for(var i = 0; i < $scope.guest.statusList.length; i++){
+                if($scope.guest.statusList[i].value === value){
+                    return $scope.guest.statusList[i];
+                }
+            }
+        }
+
         $scope.fill = function (guest) {
 
             guestResource.get({id: guest_id }, function (response) {
                 guest.name = response.name;
                 guest.surname = response.surname;
+                guest.status = findStatus(response.status);
+                guest.description = response.description;
+
 
             }, function (error) {
                 alert(error.data);
@@ -21,12 +38,15 @@ angular.module('editguest', ['ngResource','guest'])
         $scope.fill($scope.guest);
 
 
+        $scope.save = function (guest_) {
 
-        $scope.save = function (guest) {
-
+            var guest = {};
             guest.id = guest_id;
+            guest.status = guest_.status.value;
+            guest.name = guest_.name;
+            guest.surname = guest_.surname;
+            guest.description = guest_.description;
 
-            var guest = angular.copy(guest);
             console.log(guest.name);
             console.log(guest.surname);
 

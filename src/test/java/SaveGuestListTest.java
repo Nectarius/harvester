@@ -33,7 +33,11 @@ public class SaveGuestListTest {
             PlainGuestView guest = new PlainGuestView();
             guest.setName("Имя" + String.valueOf(i));
             guest.setSurname("Фамилия" + random.nextInt());
-            guest.setStatus(GuestStatus.NOT_YET_DECIDED);
+            if(i % 2 != 0) {
+                guest.setStatus(GuestStatus.NOT_YET_DECIDED);
+            } else{
+                guest.setStatus(GuestStatus.PROMISED);
+            }
             guestService.saveOrUpdateGuest(guest);
         }
 

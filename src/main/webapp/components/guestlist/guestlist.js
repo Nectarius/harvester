@@ -8,6 +8,21 @@ angular.module('guestlist', ['ngResource'])
         $scope.data = [];
         $scope.totalPages = 0;
 
+        $scope.setStatusIcon = function(value){
+
+            switch(value){
+                case  'PROMISED' :
+                    return 'glyphicon glyphicon-ok';
+                case 'NOT_YET_DECIDED' :
+                    return 'glyphicon glyphicon-cloud';
+                case 'UNLIKELY' :
+                    return 'glyphicon glyphicon-thumbs-down';
+                default :
+                    return 'glyphicon glyphicon-glass';
+            }
+
+        }
+
         $scope.isActiveColumn = function (column) {
             if (column == $scope.sortColumn) {
                 if ($scope.asc == "asc") {

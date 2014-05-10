@@ -15,7 +15,7 @@
 
 <nav class="navbar navbar-default ">
     <div class="navbar-header ">
-        <a class="navbar-brand">Сотрудники</a>
+        <a class="navbar-brand">На пейнтбол :-)</a>
     </div>
 </nav>
 
