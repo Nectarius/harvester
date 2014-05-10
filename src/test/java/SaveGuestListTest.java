@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 import service.GuestService;
 import view.PlainGuestView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -22,23 +24,48 @@ public class SaveGuestListTest {
     @Autowired
     private GuestService guestService;
 
+    private PlainGuestView createGuest(String name, String surname, GuestStatus status){
+
+        PlainGuestView plainGuestView = new PlainGuestView();
+
+        plainGuestView.setName(name);
+
+        plainGuestView.setSurname(surname);
+
+        plainGuestView.setStatus(status);
+        return plainGuestView;
+
+    }
+
     @Test
     @Transactional
     @Rollback(value = false)
     public void test() {
 
-        Random random = new Random(500);
+        List<PlainGuestView> guestList = new ArrayList<PlainGuestView>();
 
-        for (int i = 0; i < 55; i++) {
-            PlainGuestView guest = new PlainGuestView();
-            guest.setName("Имя" + String.valueOf(i));
-            guest.setSurname("Фамилия" + random.nextInt());
-            if(i % 2 != 0) {
-                guest.setStatus(GuestStatus.NOT_YET_DECIDED);
-            } else{
-                guest.setStatus(GuestStatus.PROMISED);
-            }
+        guestList.add(createGuest("Ваня", "К", GuestStatus.PROMISED));
+
+        guestList.add(createGuest("Лёша", "М", GuestStatus.PROMISED));
+
+        guestList.add(createGuest("Захар", "...", GuestStatus.NOT_YET_DECIDED));
+
+        guestList.add(createGuest("Костя", "М", GuestStatus.PROMISED));
+
+        guestList.add(createGuest("Женя", "К", GuestStatus.PROMISED));
+
+        guestList.add(createGuest("Витя", "П", GuestStatus.PROMISED));
+
+        guestList.add(createGuest("Василий", "Решетников", GuestStatus.UNLIKELY));
+
+        guestList.add(createGuest("Олег", "К", GuestStatus.PROMISED));
+
+        guestList.add(createGuest("Илья", "Ш", GuestStatus.NOT_YET_DECIDED));
+
+        for (PlainGuestView guest : guestList) {
+
             guestService.saveOrUpdateGuest(guest);
+
         }
 
     }

@@ -6,18 +6,32 @@ angular.module('newguest', ['ngResource','guest'])
         $scope.fill = function (guest) {
             guest.name = "";
             guest.surname = "";
-            guest.salary = "0";
+        }
+
+        $scope.guest.statusList = [
+            {name:'Видимо да', value:'PROMISED'},
+            {name:'Не определился', value:'NOT_YET_DECIDED'},
+            {name:'Маловероятно', value:'UNLIKELY'}
+        ];
+
+        function findStatus(value){
+            for(var i = 0; i < $scope.guest.statusList.length; i++){
+                if($scope.guest.statusList[i].value === value){
+                    return $scope.guest.statusList[i];
+                }
+            }
         }
 
         $scope.fill($scope.guest);
 
 
-        $scope.save = function (guest) {
+        $scope.save = function (guest_) {
 
-            var guest = angular.copy(guest);
-            console.log(guest.name);
-            console.log(guest.surname);
-            console.log(guest.salary);
+            var guest = {};
+            guest.status = guest_.status.value;
+            guest.name = guest_.name;
+            guest.surname = guest_.surname;
+            guest.description = guest_.description;
 
             var guestResource = $resource('/guest/save.data', JSON.stringify(guest));
 
