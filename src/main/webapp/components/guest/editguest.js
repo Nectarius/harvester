@@ -11,7 +11,6 @@ angular.module('editguest', ['ngResource','guest'])
             guestResource.get({id: guest_id }, function (response) {
                 guest.name = response.name;
                 guest.surname = response.surname;
-                guest.salary = response.salary;
 
             }, function (error) {
                 alert(error.data);
@@ -30,7 +29,6 @@ angular.module('editguest', ['ngResource','guest'])
             var guest = angular.copy(guest);
             console.log(guest.name);
             console.log(guest.surname);
-            console.log(guest.salary);
 
             var guestResource = $resource('/guest/save.data', JSON.stringify(guest));
 

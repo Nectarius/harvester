@@ -8,9 +8,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
-import service.EmployeeService;
 import service.GuestService;
-import view.PlainEmployeeView;
 import view.PlainGuestView;
 
 
