@@ -31,5 +31,13 @@
 
 <script src="components/guest/guestwidget.js"></script>
 
+<script src="components/eventlist/eventlist.js"></script>
+
+<script src="components/event/newevent.js"></script>
+
+<script src="components/event/editevent.js"></script>
+
+<script src="components/event/eventwidget.js"></script>
+
 </body>
 </html>

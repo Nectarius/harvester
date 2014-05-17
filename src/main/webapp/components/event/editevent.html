@@ -1,0 +1,22 @@
+<div class="panel panel-default container " ng-controller="eventlist" xmlns:event="http://velvet-events.org/event">
+
+    <div class="panel-heading ">Редактирование события</div>
+
+    <div class="panel-body">
+
+        <event:widget model="event"></event:widget>
+
+        <div >
+
+            <a href="#/eventlist" >Вернуться к списку</a>
+
+        </div>
+
+        <div class=" pull-right">
+
+            <button class="btn btn-success" ng-click="save(event)">Принять</button>
+
+        </div>
+
+    </div>
+</div>

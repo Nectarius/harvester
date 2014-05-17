@@ -1,0 +1,35 @@
+angular.module('newevent', ['ngResource','event'])
+    .controller('Newevent', function ($scope, $resource, $resource, $location) {
+
+        $scope.event = {};
+
+        $scope.fill = function (event) {
+            event.name = "";
+        }
+
+        $scope.fill($scope.event);
+
+
+        $scope.save = function (event_) {
+
+            var event = {};
+            event.name = event_.name;
+            event.description = event_.description;
+            event.webSite = event_.webSite;
+            event.path = event_.path;
+
+            var eventResource = $resource('/event/save.data', JSON.stringify(event));
+
+            eventResource.save(event, function (response) {
+                alert('Данные сохранены');
+                $location.path("/");
+            }, function (error) {
+                if (error.status == 400) {
+                    alert('Введены некорректные данные');
+                }
+                else
+                    alert('Произошла неизвестная ошибка');
+            });
+        }
+
+    });

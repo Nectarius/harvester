@@ -50,9 +50,6 @@ angular.module('editguest', ['ngResource','guest'])
             guest.surname = guest_.surname;
             guest.description = guest_.description;
 
-            console.log(guest.name);
-            console.log(guest.surname);
-
             var guestResource = $resource('/guest/save.data', JSON.stringify(guest));
 
             guestResource.save(guest, function (response) {
