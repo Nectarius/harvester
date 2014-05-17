@@ -6,6 +6,7 @@ public class PlainGuestView {
 	private java.lang.Long id;
 	private java.lang.String name;
 	private java.lang.String surname;
+	private java.lang.String brief;
 	private java.lang.String description;
 	private entity.GuestStatus status;
 	private java.lang.String byWhomWasAdded;
@@ -35,6 +36,13 @@ public class PlainGuestView {
 	
 		public void setSurname(java.lang.String surname) {
 			this.surname = surname;
+		}
+		public java.lang.String getBrief() {
+			return brief;
+		}
+	
+		public void setBrief(java.lang.String brief) {
+			this.brief = brief;
 		}
 		public java.lang.String getDescription() {
 			return description;

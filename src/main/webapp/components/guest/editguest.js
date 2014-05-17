@@ -27,6 +27,9 @@ angular.module('editguest', ['ngResource','guest'])
                 guest.surname = response.surname;
                 guest.status = findStatus(response.status);
                 guest.description = response.description;
+                guest.brief = response.brief;
+                guest.byWhomWasAdded = response.byWhomWasAdded;
+                guest.transport = response.transport;
 
 
             }, function (error) {

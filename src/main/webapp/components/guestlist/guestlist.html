@@ -9,7 +9,9 @@
                 <th ng:class="isActiveColumn('name')" ng:click="changeSorting('name')">Имя</th>
                 <th ng:class="isActiveColumn('surname')" ng:click="changeSorting('surname')">Фамилия</th>
                 <th ng:class=" isActiveColumn('status')" ng:click="changeSorting('status')">Статус</th>
-                <th ng:class=" isActiveColumn('description')" ng:click="changeSorting('description')">Комментарий</th>
+                <th ng:class=" isActiveColumn('brief')" ng:click="changeSorting('brief')">Комментарий</th>
+                <th ng:class=" isActiveColumn('bbyWhomWasAdded')" ng:click="changeSorting('byWhomWasAdded')">Кто пригласил</th>
+                <th ng:class=" isActiveColumn('transport')" ng:click="changeSorting('transport')">Как будет добираться</th>
             </tr>
             </thead>
             <tbody>
@@ -20,7 +22,9 @@
 
                 <td>{{item.surname}}</td>
                 <td ng:class="setStatusIcon(item.status)"></td>
-                <td>{{item.description}}</td>
+                <td>{{item.brief}}</td>
+                <td>{{item.byWhomWasAdded}}</td>
+                <td>{{item.transport}}</td>
 
                 <td>
                     <button ng-click="removeguest({{ item.id }})" class="btn btn-danger">Удалить</button>

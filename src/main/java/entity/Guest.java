@@ -16,6 +16,8 @@ public class Guest {
 
     private String surname;
 
+    private String brief;
+
     private String description;
 
     private GuestStatus status;
@@ -29,6 +31,14 @@ public class Guest {
 
     @ManyToOne
     private Event event;
+
+    public String getBrief() {
+        return brief;
+    }
+
+    public void setBrief(String brief) {
+        this.brief = brief;
+    }
 
     /**
      *

@@ -36,6 +36,8 @@ public class PlainGuestViewMapper {
 			
 				destination.setSurname(source.getSurname());
 			
+				destination.setBrief(source.getBrief());
+			
 				destination.setDescription(source.getDescription());
 			
 				destination.setStatus(source.getStatus());
@@ -51,6 +53,7 @@ public class PlainGuestViewMapper {
 				destination.setId(source.getId());
 				destination.setName(source.getName());
 				destination.setSurname(source.getSurname());
+				destination.setBrief(source.getBrief());
 				destination.setDescription(source.getDescription());
 				destination.setStatus(source.getStatus());
 				destination.setByWhomWasAdded(source.getByWhomWasAdded());
