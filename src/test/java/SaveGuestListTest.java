@@ -24,13 +24,21 @@ public class SaveGuestListTest {
     @Autowired
     private GuestService guestService;
 
-    private PlainGuestView createGuest(String name, String surname, GuestStatus status){
+    private PlainGuestView createGuest(String name, String surname, GuestStatus status, String brief, String description, String byWhomWasAdded, String transport){
 
         PlainGuestView plainGuestView = new PlainGuestView();
 
         plainGuestView.setName(name);
 
         plainGuestView.setSurname(surname);
+
+        plainGuestView.setBrief(brief);
+
+        plainGuestView.setDescription(description);
+
+        plainGuestView.setByWhomWasAdded(byWhomWasAdded);
+
+        plainGuestView.setTransport(transport);
 
         plainGuestView.setStatus(status);
         return plainGuestView;
@@ -39,28 +47,28 @@ public class SaveGuestListTest {
 
     @Test
     @Transactional
-    @Rollback(value = true)
+    @Rollback(value = false)
     public void test() {
 
         List<PlainGuestView> guestList = new ArrayList<PlainGuestView>();
 
-        guestList.add(createGuest("Ваня", "К", GuestStatus.PROMISED));
+        guestList.add(createGuest("Ваня", "К", GuestStatus.PROMISED, "", "подробнее информация ....", "", ""));
 
-        guestList.add(createGuest("Лёша", "М", GuestStatus.PROMISED));
+        guestList.add(createGuest("Лёша", "М", GuestStatus.PROMISED, "", "подробнее информация ....", "...", "..."));
 
-        guestList.add(createGuest("Захар", "...", GuestStatus.NOT_YET_DECIDED));
+        guestList.add(createGuest("Захар", "...", GuestStatus.NOT_YET_DECIDED, "", "подробнее информация ....", "...", "..."));
 
-        guestList.add(createGuest("Костя", "М", GuestStatus.PROMISED));
+        guestList.add(createGuest("Костя", "М", GuestStatus.PROMISED, "", "подробнее информация ....", "...", "..."));
 
-        guestList.add(createGuest("Женя", "К", GuestStatus.PROMISED));
+        guestList.add(createGuest("Женя", "К", GuestStatus.PROMISED, "", "подробнее информация ....", "...", "..."));
 
-        guestList.add(createGuest("Витя", "П", GuestStatus.PROMISED));
+        guestList.add(createGuest("Витя", "П", GuestStatus.PROMISED, "", "подробнее информация ....", "...", "..."));
 
-        guestList.add(createGuest("Василий", "Решетников", GuestStatus.UNLIKELY));
+        guestList.add(createGuest("Василий", "Решетников", GuestStatus.UNLIKELY, "", "подробнее информация ....", "Печкин", "Метла"));
 
-        guestList.add(createGuest("Олег", "К", GuestStatus.PROMISED));
+        guestList.add(createGuest("Олег", "К", GuestStatus.PROMISED, "", "подробнее информация ....", "?", "Иж"));
 
-        guestList.add(createGuest("Илья", "Ш", GuestStatus.NOT_YET_DECIDED));
+        guestList.add(createGuest("Илья", "Ш", GuestStatus.NOT_YET_DECIDED, "", "подробнее информация ....", "...", "Приора"));
 
         for (PlainGuestView guest : guestList) {
 
