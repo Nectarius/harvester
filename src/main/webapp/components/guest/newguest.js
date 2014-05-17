@@ -32,6 +32,7 @@ angular.module('newguest', ['ngResource','guest'])
             guest.name = guest_.name;
             guest.surname = guest_.surname;
             guest.description = guest_.description;
+           
 
             var guestResource = $resource('/guest/save.data', JSON.stringify(guest));
 

@@ -6,6 +6,8 @@ public class PlainEventView {
 	private java.lang.Long id;
 	private java.lang.String name;
 	private java.lang.String description;
+	private java.lang.String webSite;
+	private java.lang.String path;
 	private boolean status;
 
     public PlainEventView() {
@@ -32,6 +34,20 @@ public class PlainEventView {
 	
 		public void setDescription(java.lang.String description) {
 			this.description = description;
+		}
+		public java.lang.String getWebSite() {
+			return webSite;
+		}
+	
+		public void setWebSite(java.lang.String webSite) {
+			this.webSite = webSite;
+		}
+		public java.lang.String getPath() {
+			return path;
+		}
+	
+		public void setPath(java.lang.String path) {
+			this.path = path;
 		}
 		public boolean isStatus() {
 			return status;

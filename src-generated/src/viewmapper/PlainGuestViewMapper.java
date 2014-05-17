@@ -40,6 +40,10 @@ public class PlainGuestViewMapper {
 			
 				destination.setStatus(source.getStatus());
 			
+				destination.setByWhomWasAdded(source.getByWhomWasAdded());
+			
+				destination.setTransport(source.getTransport());
+			
 		return destination;
 	}
 	
@@ -49,6 +53,8 @@ public class PlainGuestViewMapper {
 				destination.setSurname(source.getSurname());
 				destination.setDescription(source.getDescription());
 				destination.setStatus(source.getStatus());
+				destination.setByWhomWasAdded(source.getByWhomWasAdded());
+				destination.setTransport(source.getTransport());
 		return destination;
 	}
 }

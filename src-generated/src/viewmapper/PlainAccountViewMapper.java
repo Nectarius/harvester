@@ -36,6 +36,8 @@ public class PlainAccountViewMapper {
 			
 				destination.setPassword(source.getPassword());
 			
+				destination.setName(source.getName());
+			
 		return destination;
 	}
 	
@@ -43,6 +45,7 @@ public class PlainAccountViewMapper {
 				destination.setId(source.getId());
 				destination.setLogin(source.getLogin());
 				destination.setPassword(source.getPassword());
+				destination.setName(source.getName());
 		return destination;
 	}
 }

@@ -36,6 +36,10 @@ public class PlainEventViewMapper {
 			
 				destination.setDescription(source.getDescription());
 			
+				destination.setWebSite(source.getWebSite());
+			
+				destination.setPath(source.getPath());
+			
 				destination.setStatus(source.isStatus());
 			
 		return destination;
@@ -45,6 +49,8 @@ public class PlainEventViewMapper {
 				destination.setId(source.getId());
 				destination.setName(source.getName());
 				destination.setDescription(source.getDescription());
+				destination.setWebSite(source.getWebSite());
+				destination.setPath(source.getPath());
 				destination.setStatus(source.isStatus());
 		return destination;
 	}

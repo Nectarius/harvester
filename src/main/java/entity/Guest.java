@@ -20,11 +20,45 @@ public class Guest {
 
     private GuestStatus status;
 
+    private String byWhomWasAdded;
+
+    private String transport;
+
+    @OneToOne
+    private Account account;
+
     @ManyToOne
     private Event event;
 
-    @ManyToOne
-    private Account hasListed;
+    /**
+     *
+     *  how he was going to get to place
+     *
+     * @return
+     */
+    public String getTransport() {
+        return transport;
+    }
+
+    public void setTransport(String transport) {
+        this.transport = transport;
+    }
+
+    public String getByWhomWasAdded() {
+        return byWhomWasAdded;
+    }
+
+    public void setByWhomWasAdded(String byWhomWasAdded) {
+        this.byWhomWasAdded = byWhomWasAdded;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
+    }
 
     public Event getEvent() {
         return event;
@@ -32,14 +66,6 @@ public class Guest {
 
     public void setEvent(Event event) {
         this.event = event;
-    }
-
-    public Account getHasListed() {
-        return hasListed;
-    }
-
-    public void setHasListed(Account hasListed) {
-        this.hasListed = hasListed;
     }
 
     public Long getId() {

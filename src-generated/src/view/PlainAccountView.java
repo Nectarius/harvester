@@ -6,6 +6,7 @@ public class PlainAccountView {
 	private java.lang.Long id;
 	private java.lang.String login;
 	private java.lang.String password;
+	private java.lang.String name;
 
     public PlainAccountView() {
 
@@ -31,5 +32,12 @@ public class PlainAccountView {
 	
 		public void setPassword(java.lang.String password) {
 			this.password = password;
+		}
+		public java.lang.String getName() {
+			return name;
+		}
+	
+		public void setName(java.lang.String name) {
+			this.name = name;
 		}
 }

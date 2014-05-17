@@ -19,7 +19,27 @@ public class Event {
 
     private String description;
 
+    private String webSite;
+
+    private String path;
+
     private boolean status;
+
+    public String getWebSite() {
+        return webSite;
+    }
+
+    public void setWebSite(String webSite) {
+        this.webSite = webSite;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 
     public Long getId() {
         return id;

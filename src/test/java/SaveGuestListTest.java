@@ -15,7 +15,7 @@ import java.util.Random;
 
 /**
  * Created by nectarius on 12/17/13.
- * удалить перед отправкой
+ *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/application-context.xml"})
@@ -39,7 +39,7 @@ public class SaveGuestListTest {
 
     @Test
     @Transactional
-    @Rollback(value = false)
+    @Rollback(value = true)
     public void test() {
 
         List<PlainGuestView> guestList = new ArrayList<PlainGuestView>();
