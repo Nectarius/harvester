@@ -12,6 +12,7 @@
     <file url="file://$PROJECT_DIR$/src/main/webapp/assets/jquery-1.10.2.min.js" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/components" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/webapp/index.jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/login.jsp" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/SaveGuestListTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/test/java/SaveGuestTest.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/templates" charset="UTF-8" />

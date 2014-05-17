@@ -23,7 +23,7 @@ public class Event {
 
     private String path;
 
-    private boolean status;
+    private boolean status = true;
 
     public String getWebSite() {
         return webSite;

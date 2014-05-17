@@ -41,6 +41,7 @@ public class SaveGuestListTest {
         plainGuestView.setTransport(transport);
 
         plainGuestView.setStatus(status);
+
         return plainGuestView;
 
     }
