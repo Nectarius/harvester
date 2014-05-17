@@ -1,5 +1,5 @@
 angular.module('editevent', ['ngResource','event'])
-    .controller('Editevent', function ($scope, $routeParams, $resource, $location) {
+    .controller('editevent', function ($scope, $routeParams, $resource, $location) {
 
         var event_id = $routeParams.id;
         var eventResource = $resource('/event/:id.data');
@@ -36,7 +36,7 @@ angular.module('editevent', ['ngResource','event'])
 
             eventResource.save(event, function (response) {
                 alert('Данные сохранены');
-                $location.path("/");
+                $location.path("/eventlist");
             }, function (error) {
                 if (error.status == 400) {
                     alert('Неверно указано имя или фамилия пользователя');

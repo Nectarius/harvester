@@ -22,7 +22,7 @@ angular.module('newevent', ['ngResource','event'])
 
             eventResource.save(event, function (response) {
                 alert('Данные сохранены');
-                $location.path("/");
+                $location.path("/eventlist");
             }, function (error) {
                 if (error.status == 400) {
                     alert('Введены некорректные данные');

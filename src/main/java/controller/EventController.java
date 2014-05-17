@@ -33,7 +33,9 @@ public class EventController {
     @ResponseBody
     public PlainEventView findEvent(@PathVariable("id") Long id) {
 
-        return EventService.findOne(id);
+        PlainEventView plainEventView = EventService.findOne(id);
+
+        return plainEventView;
 
     }
 
