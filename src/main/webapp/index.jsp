@@ -15,7 +15,7 @@
 
 <nav class="navbar navbar-default ">
     <div class="navbar-header ">
-       <a class="navbar-brand" ng:href="#/eventlist">Другие события</a>
+       <a class="navbar-brand" ng:href="#/eventlist">Другие эвенты</a>
     </div>
 </nav>
 

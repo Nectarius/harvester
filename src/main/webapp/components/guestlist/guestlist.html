@@ -1,6 +1,8 @@
 <div class="panel panel-default container " ng-controller="guestlist" xmlns:ng="http://angularjs.org">
 
-    <div class="panel-heading ">Посетители </div>
+    <div class="panel-heading ">{{event.name}}  <a  class="navbar-right" ng:href="#/editevent/{{event.id}}/">
+        Подробнее
+    </a></div>
 
     <div class="panel-body">
         <table class="table table-striped">

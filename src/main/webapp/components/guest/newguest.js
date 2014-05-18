@@ -1,5 +1,7 @@
 angular.module('newguest', ['ngResource','guest'])
-    .controller('Newguest', function ($scope, $resource, $resource, $location) {
+    .controller('Newguest', function ($scope, $resource,$routeParams, $resource, $location) {
+
+        var eventId = $routeParams.eventId;
 
         $scope.guest = {};
 
@@ -36,7 +38,7 @@ angular.module('newguest', ['ngResource','guest'])
             guest.byWhomWasAdded = guest_.byWhomWasAdded;
             guest.transport = guest_.transport;
 
-            var guestResource = $resource('/guest/save.data', JSON.stringify(guest));
+            var guestResource = $resource('/guest/event'+eventId+'.data', JSON.stringify(guest));
 
             guestResource.save(guest, function (response) {
                 alert('Данные сохранены');

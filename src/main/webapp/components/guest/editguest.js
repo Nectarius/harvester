@@ -49,8 +49,11 @@ angular.module('editguest', ['ngResource','guest'])
             guest.name = guest_.name;
             guest.surname = guest_.surname;
             guest.description = guest_.description;
+            guest.brief = guest_.brief;
+            guest.byWhomWasAdded = guest_.byWhomWasAdded;
+            guest.transport = guest_.transport;
 
-            var guestResource = $resource('/guest/save.data', JSON.stringify(guest));
+            var guestResource = $resource('/guest/update.data', JSON.stringify(guest));
 
             guestResource.save(guest, function (response) {
                 alert('Данные сохранены');

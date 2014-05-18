@@ -12,6 +12,7 @@ import service.GuestService;
 import view.PageGuestView;
 import view.PlainGuestView;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
 /**
@@ -63,8 +64,28 @@ public class HarvesterController  {
      * @param result       info
      * @return
      */
-    @RequestMapping(value = {"/guest/save.data"}, method = RequestMethod.POST)
-    public ResponseEntity<String> saveGuest(@Valid @RequestBody PlainGuestView guestView, BindingResult result) {
+    @RequestMapping(value = {"/guest/event{eventId}.data"}, method = RequestMethod.POST)
+    public ResponseEntity<String> saveGuest(@Valid @RequestBody PlainGuestView guestView,@PathVariable("eventId") Long eventId ,BindingResult result) {
+
+        if (result.hasErrors()) {
+            LOGGER.info("incorrect data: {}", result.getAllErrors());
+            return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+        } else {
+            guestService.save(guestView, eventId);
+            return new ResponseEntity<String>(HttpStatus.OK);
+        }
+
+    }
+
+    /**
+     * Сохранение данных
+     *
+     * @param guestView data view for a guest
+     * @param result       info
+     * @return
+     */
+    @RequestMapping(value = {"/guest/update.data"}, method = RequestMethod.POST)
+    public ResponseEntity<String> updateGuest(@Valid @RequestBody PlainGuestView guestView, BindingResult result) {
 
         if (result.hasErrors()) {
             LOGGER.info("incorrect data: {}", result.getAllErrors());
@@ -83,15 +104,16 @@ public class HarvesterController  {
      * @param column     column for sorting
      * @return guest page
      */
-    @RequestMapping(value = "guestlist/{pageNumber}/{pageSize}/{direction}/sortBy{column}.data", method = RequestMethod.GET)
+    @RequestMapping(value = "guestlist/{pageNumber}/{pageSize}/{direction}/sortBy{column}/event{eventId}.data", method = RequestMethod.GET)
     @ResponseBody
-    public PageGuestView findGuestList(@PathVariable("pageNumber") Integer pageNumber, @PathVariable("pageSize") Integer pageSize, @PathVariable("direction") String direction, @PathVariable("column") String column) {
+    public PageGuestView findGuestList(@PathVariable("pageNumber") Integer pageNumber, @PathVariable("pageSize") Integer pageSize, @PathVariable("direction") String direction, @PathVariable("column") String column, @PathVariable("eventId") Long eventId) {
 
-        return guestService.findAllGuestList(pageNumber, pageSize, direction, column);
+        if(eventId == 0) {
+            return guestService.findAllGuestList(pageNumber, pageSize, direction, column);
+        } else {
+            return guestService.findAllGuestList(eventId, pageNumber, pageSize, direction, column);
+        }
 
     }
-
-
-
 
 }

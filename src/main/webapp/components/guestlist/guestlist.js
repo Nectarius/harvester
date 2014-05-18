@@ -7,6 +7,8 @@ angular.module('guestlist', ['ngResource'])
         $scope.sortColumn = "name";
         $scope.data = [];
         $scope.totalPages = 0;
+        $scope.event = null;
+        var eventId = 0;
 
         $scope.setStatusIcon = function(value){
 
@@ -48,7 +50,7 @@ angular.module('guestlist', ['ngResource'])
             $scope.update();
         };
 
-        var guestListData = $resource("/guestlist/:currentPage/:pageSize/:asc/sortBy:sortColumn.data");
+        var guestListData = $resource("/guestlist/:currentPage/:pageSize/:asc/sortBy:sortColumn/event:eventId.data");
 
         $scope.next = function () {
             $scope.currentPage += 1;
@@ -61,9 +63,13 @@ angular.module('guestlist', ['ngResource'])
         }
 
         $scope.update = function () {
-            var response = guestListData.get({currentPage: $scope.currentPage, pageSize: $scope.pageSize, asc: $scope.asc, sortColumn: $scope.sortColumn }, function (response) {
+            if($scope.event !== null){
+                eventId = $scope.event.id;
+            }
+            var response = guestListData.get({currentPage: $scope.currentPage, pageSize: $scope.pageSize, asc: $scope.asc, sortColumn: $scope.sortColumn, eventId : eventId }, function (response) {
                 var length = response.content.length;
                 $scope.totalPages = response.totalPages;
+                $scope.event = response.event;
                 var newData = [];
                 for (var i = 0; i < length; i++) {
                     newData.push(response.content[i]);
@@ -76,7 +82,10 @@ angular.module('guestlist', ['ngResource'])
         }
 
         $scope.newguest = function () {
-            $location.path('/newguest');
+            if($scope.event !== null){
+                eventId = $scope.event.id;
+            }
+            $location.path('/newguest/'+ eventId);
         }
 
         $scope.removeguest = function (id) {

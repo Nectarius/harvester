@@ -1,3 +1,4 @@
+import entity.Event;
 import entity.GuestStatus;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -6,6 +7,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+import repository.EventRepository;
 import service.GuestService;
 import view.PlainGuestView;
 
@@ -23,6 +25,9 @@ public class SaveGuestListTest {
 
     @Autowired
     private GuestService guestService;
+
+    @Autowired
+    private EventRepository eventRepository;
 
     private PlainGuestView createGuest(String name, String surname, GuestStatus status, String brief, String description, String byWhomWasAdded, String transport){
 
@@ -53,6 +58,8 @@ public class SaveGuestListTest {
 
         List<PlainGuestView> guestList = new ArrayList<PlainGuestView>();
 
+        Event event = eventRepository.findByName("Пейнтбол :-)");
+
         guestList.add(createGuest("Ваня", "К", GuestStatus.PROMISED, "", "подробнее информация ....", "", ""));
 
         guestList.add(createGuest("Лёша", "М", GuestStatus.PROMISED, "", "подробнее информация ....", "...", "..."));
@@ -73,7 +80,7 @@ public class SaveGuestListTest {
 
         for (PlainGuestView guest : guestList) {
 
-            guestService.saveOrUpdateGuest(guest);
+            guestService.save(guest, event.getId());
 
         }
 

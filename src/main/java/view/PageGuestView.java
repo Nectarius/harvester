@@ -11,6 +11,16 @@ public class PageGuestView {
 
     private Integer totalPages;
 
+    private PlainEventView event;
+
+    public PlainEventView getEvent() {
+        return event;
+    }
+
+    public void setEvent(PlainEventView event) {
+        this.event = event;
+    }
+
     public PageGuestView(int totalPages, List<PlainGuestView> content) {
         this.totalPages = totalPages;
         this.content = content;

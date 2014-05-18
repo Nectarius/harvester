@@ -16,4 +16,7 @@ public interface GuestService {
 
     PlainGuestView findOne(Long guestId);
 
+    PageGuestView findAllGuestList(Long eventId, Integer pageNumber, Integer pageSize, String direction, String column);
+
+    PlainGuestView save(PlainGuestView guest, Long id);
 }
