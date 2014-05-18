@@ -6,6 +6,8 @@ angular.module('editevent', ['ngResource','event'])
 
         $scope.event = {};
 
+        $scope.eventId = event_id;
+
         $scope.fill = function (event) {
 
             eventResource.get({id: event_id }, function (response) {
