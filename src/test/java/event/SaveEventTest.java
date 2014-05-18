@@ -22,7 +22,7 @@ public class SaveEventTest {
 
     @Test
     @Transactional
-    @Rollback(value = false)
+    @Rollback(value = true)
     public void test() {
 
         Event event = new Event();

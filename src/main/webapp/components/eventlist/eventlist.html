@@ -20,6 +20,10 @@
                 <td>{{item.webSite}}</td>
                 <td>{{item.path}}</td>
 
+                <td><a ng:href="#/guestlist/event{{item.id}}/">
+                    участники
+                </a></td>
+
                 <td>
                     <button ng-click="removeevent({{ item.id }})" class="btn btn-danger">Удалить</button>
                 </td>

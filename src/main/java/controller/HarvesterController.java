@@ -104,9 +104,9 @@ public class HarvesterController  {
      * @param column     column for sorting
      * @return guest page
      */
-    @RequestMapping(value = "guestlist/{pageNumber}/{pageSize}/{direction}/sortBy{column}/event{eventId}.data", method = RequestMethod.GET)
+    @RequestMapping(value = "guestlist/event{eventId}/{pageNumber}/{pageSize}/{direction}/sortBy{column}.data", method = RequestMethod.GET)
     @ResponseBody
-    public PageGuestView findGuestList(@PathVariable("pageNumber") Integer pageNumber, @PathVariable("pageSize") Integer pageSize, @PathVariable("direction") String direction, @PathVariable("column") String column, @PathVariable("eventId") Long eventId) {
+    public PageGuestView findGuestList(@PathVariable("eventId") Long eventId,@PathVariable("pageNumber") Integer pageNumber, @PathVariable("pageSize") Integer pageSize, @PathVariable("direction") String direction, @PathVariable("column") String column) {
 
         if(eventId == 0) {
             return guestService.findAllGuestList(pageNumber, pageSize, direction, column);

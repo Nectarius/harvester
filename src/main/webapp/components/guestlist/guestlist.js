@@ -1,5 +1,5 @@
 angular.module('guestlist', ['ngResource'])
-    .controller('guestlist', function ($scope, $resource, $location) {
+    .controller('guestlist', function ($scope, $routeParams, $resource, $location) {
 
         $scope.currentPage = 0;
         $scope.pageSize = 10;
@@ -8,7 +8,8 @@ angular.module('guestlist', ['ngResource'])
         $scope.data = [];
         $scope.totalPages = 0;
         $scope.event = null;
-        var eventId = 0;
+        var eventId = $routeParams.eventId;
+        $scope.eventId = eventId;
 
         $scope.setStatusIcon = function(value){
 
@@ -50,7 +51,7 @@ angular.module('guestlist', ['ngResource'])
             $scope.update();
         };
 
-        var guestListData = $resource("/guestlist/:currentPage/:pageSize/:asc/sortBy:sortColumn/event:eventId.data");
+        var guestListData = $resource("/guestlist/event:eventId/:currentPage/:pageSize/:asc/sortBy:sortColumn.data");
 
         $scope.next = function () {
             $scope.currentPage += 1;

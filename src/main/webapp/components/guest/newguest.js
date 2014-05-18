@@ -1,5 +1,5 @@
 angular.module('newguest', ['ngResource','guest'])
-    .controller('Newguest', function ($scope, $resource,$routeParams, $resource, $location) {
+    .controller('Newguest', function ($scope, $window, $resource,$routeParams, $resource, $location) {
 
         var eventId = $routeParams.eventId;
 
@@ -42,7 +42,7 @@ angular.module('newguest', ['ngResource','guest'])
 
             guestResource.save(guest, function (response) {
                 alert('Данные сохранены');
-                $location.path("/");
+                $window.history.back();
             }, function (error) {
                 if (error.status == 400) {
                     alert('Введены некорректные данные');

@@ -53,7 +53,7 @@ public class SaveGuestListTest {
 
     @Test
     @Transactional
-    @Rollback(value = false)
+    @Rollback(value = true)
     public void test() {
 
         List<PlainGuestView> guestList = new ArrayList<PlainGuestView>();

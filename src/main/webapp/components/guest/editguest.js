@@ -1,10 +1,13 @@
 angular.module('editguest', ['ngResource','guest'])
-    .controller('Editguest', function ($scope, $routeParams, $resource, $location) {
+    .controller('Editguest', function ($scope, $window, $routeParams, $resource, $location) {
 
         var guest_id = $routeParams.id;
         var guestResource = $resource('/guest/:id.data');
+        $scope.eventId = $routeParams.eventId;
 
         $scope.guest = {};
+
+
 
         $scope.guest.statusList = [
             {name:'Видимо да', value:'PROMISED'},
@@ -57,7 +60,7 @@ angular.module('editguest', ['ngResource','guest'])
 
             guestResource.save(guest, function (response) {
                 alert('Данные сохранены');
-                $location.path("/");
+                $window.history.back();
             }, function (error) {
                 if (error.status == 400) {
                     alert('Неверно указано имя или фамилия пользователя');
