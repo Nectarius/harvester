@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns="http://java.sun.com/xml/ns/j2ee" version="2.4"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 
-    <display-name>Harvester Web Application</display-name>
+    <display-name>Events Web Application</display-name>
 
     <session-config>
         <session-timeout>60</session-timeout>
@@ -16,12 +14,16 @@
         </jsp-property-group>
     </jsp-config>
 
-   <!-- <context-param>
+    <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
-            classpath*:/*-context.xml
+           classpath*:application-context.xml
         </param-value>
-    </context-param>-->
+    </context-param>
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
 
     <filter>
         <filter-name>springCharsetForceFilter</filter-name>
@@ -37,6 +39,17 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    <filter>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>springSecurityFilterChain</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+
     <!-- Spring web app. -->
     <servlet>
         <servlet-name>harvester</servlet-name>
@@ -46,7 +59,7 @@
 
     <servlet-mapping>
         <servlet-name>harvester</servlet-name>
-        <url-pattern>*.page</url-pattern>
+        <url-pattern>/pages/*</url-pattern>
     </servlet-mapping>
 
     <servlet-mapping>
@@ -54,9 +67,19 @@
         <url-pattern>*.data</url-pattern>
     </servlet-mapping>
 
+    <servlet-mapping>
+        <servlet-name>harvester</servlet-name>
+        <url-pattern>*.js</url-pattern>
+    </servlet-mapping>
+
     <!-- Serves static content. -->
     <servlet-mapping>
         <servlet-name>default</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <!--<welcome-file-list>
+        <welcome-file>/pages/events</welcome-file>
+    </welcome-file-list>-->
+
 </web-app>

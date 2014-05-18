@@ -8,6 +8,6 @@ angular.module('guest', ['ngResource'])
                 model: '=model'
 
             },
-            templateUrl: "components/guest/guestwidget.html"
+            templateUrl: "resources/js/components/guest/guestwidget.html"
         };
     });

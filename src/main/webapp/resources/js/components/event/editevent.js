@@ -33,6 +33,7 @@ angular.module('editevent', ['ngResource','event'])
             event.description = event_.description;
             event.webSite = event_.webSite;
             event.path = event_.path;
+            event.status = true;
 
             var eventResource = $resource('/event/save.data', JSON.stringify(event));
 

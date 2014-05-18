@@ -8,6 +8,6 @@ angular.module('event', ['ngResource'])
                 model: '=model'
 
             },
-            templateUrl: "components/event/eventwidget.html"
+            templateUrl: "resources/js/components/event/eventwidget.html"
         };
     });

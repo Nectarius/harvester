@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:ss="http://www.springframework.org/schema/security"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.1.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <context:component-scan base-package="security"/>
+
+    <ss:http pattern="/pages/auth/login" security="none">
+
+    </ss:http>
+
+   <!-- <ss:http pattern="**.page" security="none">
+
+    </ss:http>-->
+
+    <ss:http pattern="**.query" security="none">
+
+    </ss:http>
+
+    <ss:http pattern="library/**/*.js" security='none'/>
+
+    <ss:http pattern="library/**/*.css" security='none'/>
+
+    <ss:http auto-config="true" access-denied-page="/pages/auth/denied" >
+        <ss:intercept-url pattern="/**"
+                          access="ROLE_GUEST"/>
+
+        <ss:form-login
+                login-page="/pages/auth/login"
+                authentication-failure-url="/pages/auth/login?error=true"
+                default-target-url="/pages/events"/>
+
+        <ss:logout
+                invalidate-session="true"
+                logout-success-url="/pages/auth/login"
+                logout-url="/pages/auth/logout"/>
+    </ss:http>
+
+
+    <ss:authentication-manager>
+        <ss:authentication-provider
+                user-service-ref="authorityService"/>
+    </ss:authentication-manager>
+
+</beans>

@@ -1,9 +1,7 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * Created by nectarius on 10.05.14.
@@ -20,6 +18,17 @@ public class Account {
     private String password;
 
     private String name;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Privilege> privilegeList;
+
+    public List<Privilege> getPrivilegeList() {
+        return privilegeList;
+    }
+
+    public void setPrivilegeList(List<Privilege> privilegeList) {
+        this.privilegeList = privilegeList;
+    }
 
     public String getName() {
         return name;
