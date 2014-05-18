@@ -3,19 +3,19 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-    <link href="${pageContext.request.contextPath}/resources/assets/bootstrap-3.0.2/css/bootstrap.min.css"  rel="stylesheet">
+    <link href="${pageContext.request.contextPath}resources/assets/bootstrap-3.0.2/css/bootstrap.min.css"  rel="stylesheet">
 
-    <link href="${pageContext.request.contextPath}/resources/assets/bootstrap-3.0.2/css/bootstrap-theme.min.css"  rel="stylesheet">
+    <link href="${pageContext.request.contextPath}resources/assets/bootstrap-3.0.2/css/bootstrap-theme.min.css"  rel="stylesheet">
 
-    <link href="${pageContext.request.contextPath}/resources/assets/events.css"  rel="stylesheet">
+    <link href="${pageContext.request.contextPath}resources/assets/events.css"  rel="stylesheet">
 
-    <script src="${pageContext.request.contextPath}/resources/assets/jquery-1.10.2.min.js"></script>
+    <script src="${pageContext.request.contextPath}resources/assets/jquery-1.10.2.min.js"></script>
 
-    <script src="${pageContext.request.contextPath}/resources/assets/bootstrap-3.0.2/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}resources/assets/bootstrap-3.0.2/js/bootstrap.min.js"></script>
 
-    <script src="${pageContext.request.contextPath}/resources/assets/angular/angular.min.js"></script>
+    <script src="${pageContext.request.contextPath}resources/assets/angular/angular.min.js"></script>
 
-    <script src="${pageContext.request.contextPath}/resources/assets/angular/angular-resource.js"></script>
+    <script src="${pageContext.request.contextPath}resources/assets/angular/angular-resource.js"></script>
 
 </head>
 
@@ -31,23 +31,23 @@
 
 <ng-view/>
 
-<script src="${pageContext.request.contextPath}/resources/js/harvester.js"></script>
+<script src="${pageContext.request.contextPath}resources/js/harvester.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/js/components/guestlist/guestlist.js"></script>
+<script src="${pageContext.request.contextPath}resources/js/components/guestlist/guestlist.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/js/components/guest/newguest.js"></script>
+<script src="${pageContext.request.contextPath}resources/js/components/guest/newguest.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/js/components/guest/editguest.js"></script>
+<script src="${pageContext.request.contextPath}resources/js/components/guest/editguest.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/js/components/guest/guestwidget.js"></script>
+<script src="${pageContext.request.contextPath}resources/js/components/guest/guestwidget.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/js/components/eventlist/eventlist.js"></script>
+<script src="${pageContext.request.contextPath}resources/js/components/eventlist/eventlist.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/js/components/event/newevent.js"></script>
+<script src="${pageContext.request.contextPath}resources/js/components/event/newevent.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/js/components/event/editevent.js"></script>
+<script src="${pageContext.request.contextPath}resources/js/components/event/editevent.js"></script>
 
-<script src="${pageContext.request.contextPath}/resources/js/components/event/eventwidget.js"></script>
+<script src="${pageContext.request.contextPath}resources/js/components/event/eventwidget.js"></script>
 
 </body>
 </html>
