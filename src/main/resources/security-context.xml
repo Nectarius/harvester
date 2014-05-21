@@ -22,9 +22,13 @@
 
     </ss:http>
 
-    <ss:http pattern="library/**/*.js" security='none'/>
+    <ss:http pattern="/**/*.css" security="none"/>
 
-    <ss:http pattern="library/**/*.css" security='none'/>
+    <ss:http pattern="/**/*.js" security="none"/>
+
+    <ss:http pattern="/" security="none"/>
+
+   <!-- <ss:http pattern="library/**/*.css" security='none'/>-->
 
     <ss:http auto-config="true" access-denied-page="/pages/auth/denied" >
         <ss:intercept-url pattern="/**"
@@ -37,7 +41,7 @@
 
         <ss:logout
                 invalidate-session="true"
-                logout-success-url="/pages/auth/login"
+                logout-success-url="/pages/events"
                 logout-url="/pages/auth/logout"/>
     </ss:http>
 

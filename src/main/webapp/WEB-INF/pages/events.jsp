@@ -7,11 +7,11 @@
 
     <link href="${pageContext.request.contextPath}resources/assets/bootstrap-3.0.2/css/bootstrap-theme.min.css"  rel="stylesheet">
 
+    <script src="${pageContext.request.contextPath}resources/assets/bootstrap-3.0.2/js/bootstrap.min.js"></script>
+
     <link href="${pageContext.request.contextPath}resources/assets/events.css"  rel="stylesheet">
 
     <script src="${pageContext.request.contextPath}resources/assets/jquery-1.10.2.min.js"></script>
-
-    <script src="${pageContext.request.contextPath}resources/assets/bootstrap-3.0.2/js/bootstrap.min.js"></script>
 
     <script src="${pageContext.request.contextPath}resources/assets/angular/angular.min.js"></script>
 

@@ -60,23 +60,20 @@ public class SaveGuestListTest {
 
         Event event = eventRepository.findByName("Пейнтбол :-)");
 
+        guestList.add(createGuest("Женя", "К", GuestStatus.PROMISED, "", "подробнее информация ....", "", ""));
+
         guestList.add(createGuest("Ваня", "К", GuestStatus.PROMISED, "", "подробнее информация ....", "", ""));
 
         guestList.add(createGuest("Лёша", "М", GuestStatus.PROMISED, "", "подробнее информация ....", "...", "..."));
 
-        guestList.add(createGuest("Захар", "...", GuestStatus.NOT_YET_DECIDED, "", "подробнее информация ....", "...", "..."));
+        guestList.add(createGuest("Коля", "П", GuestStatus.PROMISED, "", "подробнее информация ....", "", ""));
 
-        guestList.add(createGuest("Костя", "М", GuestStatus.PROMISED, "", "подробнее информация ....", "...", "..."));
+        guestList.add(createGuest("Вася", "К", GuestStatus.PROMISED, "", "подробнее информация ....", "", ""));
 
-        guestList.add(createGuest("Женя", "К", GuestStatus.PROMISED, "", "подробнее информация ....", "...", "..."));
+        guestList.add(createGuest("Денис", "Ф", GuestStatus.NOT_YET_DECIDED, "", "подробнее информация ....", "", ""));
 
-        guestList.add(createGuest("Витя", "П", GuestStatus.PROMISED, "", "подробнее информация ....", "...", "..."));
+        guestList.add(createGuest("Олег", "К", GuestStatus.NOT_YET_DECIDED, "", "подробнее информация ....", "", ""));
 
-        guestList.add(createGuest("Василий", "Решетников", GuestStatus.UNLIKELY, "", "подробнее информация ....", "Печкин", "Метла"));
-
-        guestList.add(createGuest("Олег", "К", GuestStatus.PROMISED, "", "подробнее информация ....", "?", "Иж"));
-
-        guestList.add(createGuest("Илья", "Ш", GuestStatus.NOT_YET_DECIDED, "", "подробнее информация ....", "...", "Приора"));
 
         for (PlainGuestView guest : guestList) {
 

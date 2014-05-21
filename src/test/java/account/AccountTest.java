@@ -32,7 +32,7 @@ public class AccountTest {
 
     @Test
     @Transactional
-    @Rollback(value = true)
+    @Rollback(value = false)
     public void test() {
 
         Account account = new Account();
