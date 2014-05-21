@@ -15,7 +15,7 @@
 
 
         <properties>
-
+            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
              <!--  <property name="hibernate.hbm2ddl.auto" value="create" />-->
             <!-- <property name="eclipselink.ddl-generation" value="drop-and-create-tables" -->
 
