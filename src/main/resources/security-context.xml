@@ -28,6 +28,9 @@
 
     <ss:http pattern="/" security="none"/>
 
+    <ss:http pattern="/**/*.ico" security="none"/>
+
+
    <!-- <ss:http pattern="library/**/*.css" security='none'/>-->
 
     <ss:http auto-config="true" access-denied-page="/pages/auth/denied" >
