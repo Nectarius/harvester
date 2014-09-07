@@ -32,12 +32,12 @@ public class AccountTest {
 
     @Test
     @Transactional
-    @Rollback(value = true)
+    @Rollback(value = false)
     public void test() {
 
         Account account = new Account();
 
-        account.setLogin("Ivan");
+        account.setLogin("Felix");
 
         account.setPassword("Velvet");
 

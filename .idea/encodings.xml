@@ -1,25 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
-    <file url="file://$PROJECT_DIR$/src/main/java/security/AuthorityService.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/security/GraphDashboardDecisionVoter.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/service/AccountService.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/java/service/impl/AccountServiceImpl.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/application-context.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/persistence-context.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/persistence.properties" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/persistence.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/resources/security-context.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/harvester-servlet.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/events.jsp" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/login_.jsp" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/assets" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/assets/jquery-1.10.2.min.js" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/main/webapp/resources/js/components" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/SaveGuestListTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/src/test/java/SaveGuestTest.java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/templates" charset="UTF-8" />
-  </component>
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false" />
 </project>
 

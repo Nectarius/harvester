@@ -24,6 +24,7 @@
 <nav class="navbar navbar-default ">
     <div class="navbar-header ">
         <a class="navbar-brand" ng:href="#/eventlist">Другие эвенты</a>
+        <a class="navbar-brand" ng:href="#/notelist">Заметки</a>
         <a class="navbar-brand navbar-right" href="/pages/auth/logout" > Выйти</a>
     </div>
 
@@ -48,6 +49,15 @@
 <script src="${pageContext.request.contextPath}resources/js/components/event/editevent.js"></script>
 
 <script src="${pageContext.request.contextPath}resources/js/components/event/eventwidget.js"></script>
+
+
+<script src="${pageContext.request.contextPath}resources/js/components/note/newnote.js"></script>
+
+<script src="${pageContext.request.contextPath}resources/js/components/note/editnote.js"></script>
+
+<script src="${pageContext.request.contextPath}resources/js/components/note/notewidget.js"></script>
+
+<script src="${pageContext.request.contextPath}resources/js/components/notes/notelist.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,42 @@
+<div class="panel panel-default container " ng-controller="notelist" xmlns:ng="http://angularjs.org">
+
+    <div class="panel-heading ">Заметки</div>
+
+    <div class="panel-body">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th ng:class="isActiveColumn('theme')" ng:click="changeSorting('theme')">Тема</th>
+                <th ng:class=" isActiveColumn('date')" ng:click="changeSorting('date')">Дата</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in data">
+                <td><a ng:href="#/editnote/{{ item.id }}/">
+                    {{item.theme}}
+                </a></td>
+
+                <td>{{item.date}}</td>
+
+                <td>
+                    <button ng-click="removenote({{ item.id }})" class="btn btn-danger">Удалить</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="pull-left">
+            <button class="btn btn-primary" ng-disabled="currentPage == 0" ng-click="last()">
+                Предыдущий
+            </button>
+            {{currentPage+1}}/{{numberOfPages()}}
+            <button class="btn btn-primary" ng-disabled="currentPage >= totalPages-1"
+                    ng-click="next()">
+                Следующий
+            </button>
+        </div>
+        <div class="pull-right">
+            <button ng-click="newnote()" class="btn btn-success">Добавить</button>
+        </div>
+    </div>
+</div>

@@ -17,6 +17,7 @@ import view.PlainGuestView;
 import viewmapper.PlainEventViewMapper;
 import viewmapper.PlainGuestViewMapper;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -135,6 +136,10 @@ public class GuestServiceImpl implements GuestService {
 
         Event event = findLastEvent();
 
+        if(event == null){
+           return new PageGuestView(0, new ArrayList<PlainGuestView>());
+        }
+
         Page<Guest> employeeList = guestRepository.findAllByEventId(event.getId(), request);
 
         PageGuestView page = new PageGuestView(employeeList.getTotalPages(), plainGuestViewMapper.createList(employeeList.getContent()));
@@ -148,7 +153,7 @@ public class GuestServiceImpl implements GuestService {
     private Event findLastEvent(){
         Pageable theOne = new PageRequest(0, 1);
         Page<Event> eventList = eventRepository.findActive(theOne);
-        if(eventList.getSize()!=1){
+        if(eventList.getSize()<=1){
             return null;
         } else{
            return eventList.getContent().get(0);
