@@ -40,7 +40,8 @@
         <ss:form-login
                 login-page="/pages/auth/login"
                 authentication-failure-url="/pages/auth/login?error=true"
-                default-target-url="/pages/events"/>
+                default-target-url="/pages/events#/notelist"
+                always-use-default-target="true"/>
 
         <ss:logout
                 invalidate-session="true"
