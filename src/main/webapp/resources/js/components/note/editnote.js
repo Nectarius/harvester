@@ -12,7 +12,7 @@ angular.module('editnote', ['ngResource','note'])
 
             noteResource.get({id: note_id }, function (response) {
                 event.theme = response.theme;
-                event.date = response.date;
+                //event.date = response.date;
                 event.text = response.text;
 
             }, function (error) {
@@ -27,13 +27,13 @@ angular.module('editnote', ['ngResource','note'])
         $scope.save = function (note_) {
 
             var note = {};
-            note.id = note_.id;
+            note.id = note_id;
             note.theme = note_.theme;
-            note.date = note_.date;
+            //note.date = note_.date;
             note.text = note_.text;
 
 
-            noteResource = $resource('/note/save.data', JSON.stringify(note));
+            noteResource = $resource('/note/save.data', note);
 
             noteResource.save(note, function (response) {
                 alert('Данные сохранены');

@@ -26,6 +26,23 @@ about deploy war
 
 https://devcenter.heroku.com/articles/war-deployment
 
+
+adelfiri@clapatria:~$ sudo psql --version
+psql (PostgreSQL) 9.3.4
+adelfiri@clapatria:~$ sudo -u postgres psql postgres
+psql (9.3.4, server 9.3.5)
+Type "help" for help.
+
+postgres=# \password Coryll
+Enter new password: 
+Enter it again: 
+ERROR:  role "coryll" does not exist
+postgres=# \password postgres
+Enter new password: 
+Enter it again: 
+postgres=# 
+
+
 Замечания:
 
 1. из странички человека надо добавить кнопку отмена

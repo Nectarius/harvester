@@ -35,7 +35,9 @@ angular.module('editevent', ['ngResource','event'])
             event.path = event_.path;
             event.status = true;
 
-            var eventResource = $resource('/event/save.data', JSON.stringify(event));
+            //var data = JSON.stringify(event);
+
+            var eventResource = $resource('/event/save.data', event);
 
             eventResource.save(event, function (response) {
                 alert('Данные сохранены');

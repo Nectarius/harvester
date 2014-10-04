@@ -15,10 +15,10 @@ angular.module('newnote', ['ngResource','note'])
             var note = {};
             note.id = note_.id;
             note.theme = note_.theme;
-            note.date = note_.date;
+            //note.date = note_.date;
             note.text = note_.text;
 
-            var noteResource = $resource('/note/save.data', JSON.stringify(note));
+            var noteResource = $resource('/note/save.data', note);
 
             noteResource.save(note, function (response) {
                 alert('Данные сохранены');

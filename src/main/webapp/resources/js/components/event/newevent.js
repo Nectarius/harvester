@@ -18,7 +18,7 @@ angular.module('newevent', ['ngResource','event'])
             event.webSite = event_.webSite;
             event.path = event_.path;
 
-            var eventResource = $resource('/event/save.data', JSON.stringify(event));
+            var eventResource = $resource('/event/save.data', event);
 
             eventResource.save(event, function (response) {
                 alert('Данные сохранены');

@@ -38,7 +38,9 @@ angular.module('newguest', ['ngResource','guest'])
             guest.byWhomWasAdded = guest_.byWhomWasAdded;
             guest.transport = guest_.transport;
 
-            var guestResource = $resource('/guest/event'+eventId+'.data', JSON.stringify(guest));
+            //var data = JSON.stringify(guest);
+
+            var guestResource = $resource('/guest/event'+eventId+'.data', guest);
 
             guestResource.save(guest, function (response) {
                 alert('Данные сохранены');
