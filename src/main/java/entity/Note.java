@@ -1,9 +1,6 @@
 package entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 /**
@@ -23,6 +20,17 @@ public class Note {
     private Date createTime;
 
     private String text;
+
+    @ManyToOne
+    private Account author;
+
+    public Account getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(Account author) {
+        this.author = author;
+    }
 
     public Long getId() {
         return id;

@@ -11,9 +11,9 @@ import view.PlainNoteView;
  */
 public interface NoteService {
 
-    PageNoteView findAllNoteList(int pageNumber, int pageSize, String direction, String column);
+    PageNoteView findAllNoteList(String author, int pageNumber, int pageSize, String direction, String column);
 
-    PlainNoteView saveOrUpdateNote(PlainNoteView view);
+    PlainNoteView saveOrUpdateNote(PlainNoteView view, String authorName);
 
     void deleteNote(Long noteId);
 

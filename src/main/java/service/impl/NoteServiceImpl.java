@@ -1,5 +1,6 @@
 package service.impl;
 
+import entity.Account;
 import entity.Note;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import repository.AccountRepository;
 import repository.NoteRepository;
 import service.NoteService;
 import view.PageNoteView;
@@ -28,39 +30,45 @@ public class NoteServiceImpl implements NoteService {
     @Autowired
     private PlainNoteViewMapper plainNoteViewMapper;
 
-
     @Autowired
     private NoteRepository noteRepository;
+
+    @Autowired
+    private AccountRepository accountRepository;
 
     private final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(NoteServiceImpl.class.getName());
 
 
     @Override
-    public PageNoteView findAllNoteList(int pageNumber, int pageSize, String direction, String column) {
+    public PageNoteView findAllNoteList(String author, int pageNumber, int pageSize, String direction, String column) {
+
+        Account account = accountRepository.findByLogin(author);
 
         Sort.Direction direction_ = Sort.Direction.fromString(direction);
 
         PageRequest request = new PageRequest(pageNumber, pageSize, direction_, column);
 
-        Page<Note> noteList = noteRepository.findAll(request);
+        Page<Note> noteList = noteRepository.findAllByAccountId(account.getId(), request);
 
         return new PageNoteView(noteList.getTotalPages(), plainNoteViewMapper.createList(noteList.getContent()));
     }
 
     @Override
-    public PlainNoteView saveOrUpdateNote(PlainNoteView view) {
+    public PlainNoteView saveOrUpdateNote(PlainNoteView view, String authorName) {
         Note note;
         Date date = new Date();
         if (view.getId() == null) {
             note = new Note();
-            view.setCreateTime(date);
-            view.setLastUpdateTime(date);
+            plainNoteViewMapper.copyFrom(view, note);
+            note.setCreateTime(date);
+            note.setLastUpdateTime(date);
+            Account account = accountRepository.findByLogin(authorName);
+            note.setAuthor(account);
         } else {
             note = noteRepository.findOne(view.getId());
-            view.setLastUpdateTime(date);
+            plainNoteViewMapper.copyFrom(view, note);
+            note.setLastUpdateTime(date);
         }
-
-        plainNoteViewMapper.copyFrom(view, note);
 
         note = noteRepository.save(note);
 

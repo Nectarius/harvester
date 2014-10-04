@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import repository.AccountRepository;
+import service.AccountService;
 import service.EventService;
 import service.NoteService;
 import view.PageEventView;
@@ -16,6 +18,7 @@ import view.PlainEventView;
 import view.PlainNoteView;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 /**
  * Created by nectarius on 11/16/13.
@@ -75,13 +78,13 @@ public class NoteController {
      * @return
      */
     @RequestMapping(value = {"/note/save.data"}, method = RequestMethod.POST)
-    public ResponseEntity<String> saveNote(@Valid @RequestBody PlainNoteView noteView, BindingResult result) {
+    public ResponseEntity<String> saveNote(@Valid @RequestBody PlainNoteView noteView , BindingResult result, Principal principal) {
 
         if (result.hasErrors()) {
             LOGGER.info("incorrect data: {}", result.getAllErrors());
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         } else {
-            noteService.saveOrUpdateNote(noteView);
+            noteService.saveOrUpdateNote(noteView, principal.getName());
             return new ResponseEntity<String>(HttpStatus.OK);
         }
 
@@ -96,9 +99,9 @@ public class NoteController {
      */
     @RequestMapping(value = "notelist/{pageNumber}/{pageSize}/{direction}/sortBy{column}.data", method = RequestMethod.GET)
     @ResponseBody
-    public PageNoteView findEventList(@PathVariable("pageNumber") Integer pageNumber, @PathVariable("pageSize") Integer pageSize, @PathVariable("direction") String direction, @PathVariable("column") String column) {
+    public PageNoteView findEventList(@PathVariable("pageNumber") Integer pageNumber, @PathVariable("pageSize") Integer pageSize, @PathVariable("direction") String direction, @PathVariable("column") String column, Principal principal) {
 
-        return noteService.findAllNoteList(pageNumber, pageSize, direction, column);
+        return noteService.findAllNoteList(principal.getName(), pageNumber, pageSize, direction, column);
 
     }
 
