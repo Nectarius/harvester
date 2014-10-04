@@ -5,7 +5,8 @@ public class PlainNoteView {
 
 	private java.lang.Long id;
 	private java.lang.String theme;
-	private java.util.Date date;
+	private java.util.Date lastUpdateTime;
+	private java.util.Date createTime;
 	private java.lang.String text;
 
     public PlainNoteView() {
@@ -26,12 +27,19 @@ public class PlainNoteView {
 		public void setTheme(java.lang.String theme) {
 			this.theme = theme;
 		}
-		public java.util.Date getDate() {
-			return date;
+		public java.util.Date getLastUpdateTime() {
+			return lastUpdateTime;
 		}
 	
-		public void setDate(java.util.Date date) {
-			this.date = date;
+		public void setLastUpdateTime(java.util.Date lastUpdateTime) {
+			this.lastUpdateTime = lastUpdateTime;
+		}
+		public java.util.Date getCreateTime() {
+			return createTime;
+		}
+	
+		public void setCreateTime(java.util.Date createTime) {
+			this.createTime = createTime;
 		}
 		public java.lang.String getText() {
 			return text;

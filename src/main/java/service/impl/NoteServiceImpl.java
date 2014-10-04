@@ -13,6 +13,8 @@ import view.PageNoteView;
 import view.PlainNoteView;
 import viewmapper.PlainNoteViewMapper;
 
+import java.util.Date;
+
 /**
  * @author Konstantin Molodtsov
  * @author $Author$ (current maintainer)
@@ -48,11 +50,14 @@ public class NoteServiceImpl implements NoteService {
     @Override
     public PlainNoteView saveOrUpdateNote(PlainNoteView view) {
         Note note;
-
+        Date date = new Date();
         if (view.getId() == null) {
             note = new Note();
+            view.setCreateTime(date);
+            view.setLastUpdateTime(date);
         } else {
             note = noteRepository.findOne(view.getId());
+            view.setLastUpdateTime(date);
         }
 
         plainNoteViewMapper.copyFrom(view, note);

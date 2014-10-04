@@ -34,7 +34,9 @@ public class PlainNoteViewMapper {
 			
 				destination.setTheme(source.getTheme());
 			
-				destination.setDate(source.getDate());
+				destination.setLastUpdateTime(source.getLastUpdateTime());
+			
+				destination.setCreateTime(source.getCreateTime());
 			
 				destination.setText(source.getText());
 			
@@ -44,7 +46,8 @@ public class PlainNoteViewMapper {
 	public Note copyFrom(PlainNoteView source, Note destination) {
 				destination.setId(source.getId());
 				destination.setTheme(source.getTheme());
-				destination.setDate(source.getDate());
+				destination.setLastUpdateTime(source.getLastUpdateTime());
+				destination.setCreateTime(source.getCreateTime());
 				destination.setText(source.getText());
 		return destination;
 	}

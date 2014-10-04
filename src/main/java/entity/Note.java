@@ -18,7 +18,9 @@ public class Note {
 
     private String theme;
 
-    private Date date;
+    private Date lastUpdateTime;
+
+    private Date createTime;
 
     private String text;
 
@@ -38,12 +40,20 @@ public class Note {
         this.theme = theme;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getLastUpdateTime() {
+        return lastUpdateTime;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setLastUpdateTime(Date lastUpdateTime) {
+        this.lastUpdateTime = lastUpdateTime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public String getText() {
