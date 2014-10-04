@@ -1,7 +1,5 @@
 package service.impl;
 
-import entity.Account;
-import entity.Event;
 import entity.Note;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,15 +7,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import repository.AccountRepository;
 import repository.NoteRepository;
-import service.AccountService;
 import service.NoteService;
-import view.PageEventView;
 import view.PageNoteView;
-import view.PlainAccountView;
 import view.PlainNoteView;
-import viewmapper.PlainAccountViewMapper;
 import viewmapper.PlainNoteViewMapper;
 
 /**

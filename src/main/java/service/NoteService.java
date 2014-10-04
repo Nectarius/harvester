@@ -1,6 +1,7 @@
 package service;
 
-import view.*;
+import view.PageNoteView;
+import view.PlainNoteView;
 
 /**
  * @author Konstantin Molodtsov
