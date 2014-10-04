@@ -15,6 +15,8 @@ git push -u origin master
 
 git remote set-url origin git://new.url.here
 
+ git push heroku master
+
 
 Host	ec2-54-247-78-153.eu-west-1.compute.amazonaws.com
 Database	d8562gpmriu22j
