@@ -66,6 +66,7 @@ public class NoteServiceImpl implements NoteService {
             note.setAuthor(account);
         } else {
             note = noteRepository.findOne(view.getId());
+            view.setCreateTime(note.getCreateTime());
             plainNoteViewMapper.copyFrom(view, note);
             note.setLastUpdateTime(date);
         }
