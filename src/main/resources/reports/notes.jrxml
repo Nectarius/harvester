@@ -97,11 +97,11 @@
             <reportElement style="Row" mode="Opaque" x="0" y="0" width="555" height="15" uuid="fa157804-c3a3-433a-aec0-c042bc1dbb73"/>
         </frame>
         <textField>
-            <reportElement x="0" y="0" width="100" height="20" uuid="547df713-22ce-471e-b396-9a19d10f406d"/>
+            <reportElement style="Row" x="0" y="0" width="100" height="20" uuid="547df713-22ce-471e-b396-9a19d10f406d"/>
             <textFieldExpression class="java.lang.String"><![CDATA[$F{theme}]]></textFieldExpression>
         </textField>
         <textField>
-            <reportElement x="0" y="20" width="555" height="80" uuid="547df713-22ce-471e-b396-9a19d10f406d"/>
+            <reportElement style="Row" x="0" y="20" width="555" height="80" uuid="547df713-22ce-471e-b396-9a19d10f406d"/>
             <textFieldExpression class="java.lang.String"><![CDATA[$F{text}]]></textFieldExpression>
         </textField>
     </band>
