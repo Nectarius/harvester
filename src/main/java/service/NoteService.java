@@ -3,6 +3,8 @@ package service;
 import view.PageNoteView;
 import view.PlainNoteView;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @author Konstantin Molodtsov
  * @author $Author$ (current maintainer)
@@ -18,4 +20,6 @@ public interface NoteService {
     void deleteNote(Long noteId);
 
     PlainNoteView findOne(Long noteId);
+
+    void download(String author, String type, String token, HttpServletResponse response);
 }

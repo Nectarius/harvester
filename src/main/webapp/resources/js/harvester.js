@@ -15,6 +15,7 @@ angular.module('guestpage',
         $routeProvider.when('/newnote', {templateUrl: 'resources/js/components/note/newnote.html', controller: 'newnote'});
         $routeProvider.when('/editnote/:id', {templateUrl: 'resources/js/components/note/editnote.html', controller: 'editnote'});
 
+
         $routeProvider.otherwise({redirectTo: '/guestlist/event0'});
     }]).config(['$provide', function($provide){
         // this demonstrates how to register a new tool and add it to the default toolbar

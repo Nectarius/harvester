@@ -1,5 +1,7 @@
 package entity;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -19,6 +21,8 @@ public class Note {
 
     private Date createTime;
 
+    @Length(min = 5, max = 2048,
+            message = "'note' must be between 5 and 2048 characters in length.")
     private String text;
 
     @ManyToOne

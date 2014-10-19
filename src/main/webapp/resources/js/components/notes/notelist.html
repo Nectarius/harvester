@@ -27,6 +27,7 @@
         </table>
 
         <div class="pull-left">
+
             <button class="btn btn-primary" ng-disabled="currentPage == 0" ng-click="last()">
                 Предыдущий
             </button>
@@ -35,9 +36,15 @@
                     ng-click="next()">
                 Следующий
             </button>
+
+            <div class="media pull-left">
+                <a target="_self" href="download?type=pdf&token=55" download="test.pdf">Скачай отчёт</a>
+            </div>
+
         </div>
         <div class="pull-right">
             <button ng-click="newnote()" class="btn btn-success">Добавить</button>
         </div>
+
     </div>
 </div>

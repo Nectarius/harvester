@@ -19,4 +19,7 @@ public interface NoteRepository extends JpaRepository<Note, Long>{
     @Query("select n from Note n where n.author.id = :accountId ")
     Page<Note> findAllByAccountId(@Param("accountId") Long accountId, Pageable pageable);
 
+    @Query("select n from Note n where n.author.id = :accountId ")
+    List<Note> findAllByAuthor(@Param("accountId") Long accountId);
+
 }

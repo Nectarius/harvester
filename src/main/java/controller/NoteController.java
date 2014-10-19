@@ -8,15 +8,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import repository.AccountRepository;
-import service.AccountService;
-import service.EventService;
 import service.NoteService;
-import view.PageEventView;
 import view.PageNoteView;
-import view.PlainEventView;
 import view.PlainNoteView;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.security.Principal;
 
@@ -103,6 +99,13 @@ public class NoteController {
 
         return noteService.findAllNoteList(principal.getName(), pageNumber, pageSize, direction, column);
 
+    }
+
+    @RequestMapping(value="/download")
+    public void download(@RequestParam String type,
+                         @RequestParam String token,
+                         HttpServletResponse response, Principal principal) {
+        noteService.download(principal.getName(), type, token, response);
     }
 
 
