@@ -33,11 +33,11 @@
 
 
 
-    <script src="${pageContext.request.contextPath}resources/assets/textAngular-sanitize.min.js"></script>
+    <script src="${pageContext.request.contextPath}resources/assets/text-angular/textAngular-sanitize.js"></script>
 
-    <script src="${pageContext.request.contextPath}resources/assets/textAngular.min.js"></script>
+    <script src="${pageContext.request.contextPath}resources/assets/text-angular/textAngular.js"></script>
 
-
+    <script src="${pageContext.request.contextPath}resources/assets/text-angular/textAngularSetup.js"></script>
 
 
 </head>

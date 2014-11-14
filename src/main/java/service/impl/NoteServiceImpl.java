@@ -6,15 +6,20 @@ import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.engine.design.JasperDesign;
 import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import org.htmlcleaner.CleanerProperties;
+import org.htmlcleaner.HtmlCleaner;
+import org.htmlcleaner.TagNode;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.web.util.HtmlUtils;
 import repository.AccountRepository;
 import repository.NoteRepository;
 import service.NoteService;
+import service.TextTransformationService;
 import service.report.ExporterService;
 import view.PageNoteView;
 import view.PlainNoteView;
@@ -51,6 +56,9 @@ public class NoteServiceImpl implements NoteService {
 
     @Autowired
     private ExporterService exporter;
+
+    @Autowired
+    private TextTransformationService textTransformationService;
 
     private final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(NoteServiceImpl.class.getName());
 
@@ -110,6 +118,13 @@ public class NoteServiceImpl implements NoteService {
         return plainNoteViewMapper.create(noteRepository.findOne(noteId));
     }
 
+    private void cleanHtml(List<PlainNoteView> notes){
+        for(PlainNoteView note : notes){
+            String text = note.getText();
+            note.setText(textTransformationService.htmlToText(text));
+        }
+    }
+
     public void download(String author, String type, String token, HttpServletResponse response) {
 
         try {
@@ -129,6 +144,8 @@ public class NoteServiceImpl implements NoteService {
             // 5. Create the JasperPrint object
             // Make sure to pass the JasperReport, report parameters, and data source
             List<PlainNoteView> notes = findAllNoteList(author);
+
+            cleanHtml(notes);
 
             JasperPrint jp = JasperFillManager.fillReport(jr, params, new JRBeanCollectionDataSource(notes));
 

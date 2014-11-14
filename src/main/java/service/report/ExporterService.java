@@ -3,13 +3,17 @@ package service.report;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.export.HtmlExporter;
 import net.sf.jasperreports.engine.export.JRPdfExporter;
 import net.sf.jasperreports.engine.export.JRXlsAbstractExporterParameter;
 import net.sf.jasperreports.engine.export.JRXlsExporter;
+import net.sf.jasperreports.export.*;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by adelfiri on 05.10.14.
@@ -19,8 +23,10 @@ public class ExporterService {
 
     public static final String MEDIA_TYPE_EXCEL = "application/vnd.ms-excel";
     public static final String MEDIA_TYPE_PDF = "application/pdf";
+    public static final String MEDIA_TYPE_HTML = "application/html";
     public static final String EXTENSION_TYPE_EXCEL = "xls";
     public static final String EXTENSION_TYPE_PDF = "pdf";
+    public static final String EXTENSION_TYPE_HTML = "html";
 
     public HttpServletResponse export(String type,
                                       JasperPrint jp,
@@ -60,6 +66,23 @@ public class ExporterService {
 
         }
 
+        if (type.equalsIgnoreCase(EXTENSION_TYPE_HTML)) {
+            // Export to output stream
+            exportHTML(jp, baos);
+
+            // Set our response properties
+            // Here you can declare a custom filename
+            String fileName = "Report.html";
+            response.setHeader("Content-Disposition", "inline; filename="+ fileName);
+
+            // Set content type
+            response.setContentType(MEDIA_TYPE_HTML);
+            response.setContentLength(baos.size());
+
+            return response;
+
+        }
+
         throw new RuntimeException("No type set for type " + type);
     }
 
@@ -91,6 +114,32 @@ public class ExporterService {
         // Here we assign the parameters jp and baos to the exporter
         exporter.setParameter(JRExporterParameter.JASPER_PRINT, jp);
         exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, baos);
+
+        try {
+            exporter.exportReport();
+
+        } catch (JRException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void exportHTML(JasperPrint jp, ByteArrayOutputStream baos) {
+        // Create a JRXlsExporter instance
+        HtmlExporter exporter= new HtmlExporter();
+
+        List<JasperPrint> jasperPrintList = new ArrayList<JasperPrint>();
+        jasperPrintList.add(jp);
+
+        // Here we assign the parameters jp and baos to the exporter
+        exporter.setExporterInput(SimpleExporterInput.getInstance(jasperPrintList));
+        HtmlExporterOutput htmlExporterOutput = new SimpleHtmlExporterOutput(baos);
+        exporter.setExporterOutput(htmlExporterOutput);
+
+        //SimpleHtmlExporterConfiguration configuration = new SimpleHtmlExporterConfiguration();
+        //configuration.setFlushOutput();
+        //exporter.setConfiguration(configuration);
+
+        //exporter.setParameter(JRExporterParameter.OUTPUT_STREAM, baos);
 
         try {
             exporter.exportReport();
