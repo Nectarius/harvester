@@ -13,7 +13,9 @@ import service.EventService;
 import view.PageEventView;
 import view.PlainEventView;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.security.Principal;
 
 /**
  * Created by nectarius on 11/16/13.
@@ -22,7 +24,7 @@ import javax.validation.Valid;
 public class EventController {
 
     @Autowired
-    private EventService EventService;
+    private EventService eventService;
 
     private final static Logger LOGGER = LoggerFactory.getLogger(EventController.class.getName());
 
@@ -41,7 +43,7 @@ public class EventController {
     @ResponseBody
     public PlainEventView findEvent(@PathVariable("id") Long id) {
 
-        PlainEventView plainEventView = EventService.findOne(id);
+        PlainEventView plainEventView = eventService.findOne(id);
 
         return plainEventView;
 
@@ -57,7 +59,7 @@ public class EventController {
     public ResponseEntity<String> removeEvent(@PathVariable("id") Long id) {
 
         if (id != null) {
-            EventService.deleteEvent(id);
+            eventService.deleteEvent(id);
             return new ResponseEntity<String>(HttpStatus.OK);
         } else {
             LOGGER.warn("Request event id is null");
@@ -80,7 +82,7 @@ public class EventController {
             LOGGER.info("incorrect data: {}", result.getAllErrors());
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         } else {
-            EventService.saveOrUpdateEvent(EventView);
+            eventService.saveOrUpdateEvent(EventView);
             return new ResponseEntity<String>(HttpStatus.OK);
         }
 
@@ -97,8 +99,15 @@ public class EventController {
     @ResponseBody
     public PageEventView findEventList(@PathVariable("pageNumber") Integer pageNumber, @PathVariable("pageSize") Integer pageSize, @PathVariable("direction") String direction, @PathVariable("column") String column) {
 
-        return EventService.findAllEventList(pageNumber, pageSize, direction, column);
+        return eventService.findAllEventList(pageNumber, pageSize, direction, column);
 
+    }
+
+    @RequestMapping(value="/downloadEvents")
+    public void download(@RequestParam String type,
+                         @RequestParam String token,
+                         HttpServletResponse response, Principal principal) {
+        eventService.downloadEvents(type, token, response);
     }
 
 

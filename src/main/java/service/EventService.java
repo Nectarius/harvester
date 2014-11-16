@@ -3,6 +3,8 @@ package service;
 import view.PageEventView;
 import view.PlainEventView;
 
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * Created by nectarius on 17.05.14.
  */
@@ -15,5 +17,7 @@ public interface EventService {
     void deleteEvent(Long eventId);
 
     PlainEventView findOne(Long eventId);
+
+    void downloadEvents(String type, String token, HttpServletResponse response);
 
 }

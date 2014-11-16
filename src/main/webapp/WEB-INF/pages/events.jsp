@@ -46,7 +46,7 @@
 
 <nav class="navbar navbar-default ">
     <div class="navbar-header ">
-        <a class="navbar-brand" ng:href="#/eventlist">Другие эвенты</a>
+        <a class="navbar-brand" ng:href="#/eventlist">Эвенты</a>
         <a class="navbar-brand" ng:href="#/notelist">Заметки</a>
         <a class="navbar-brand navbar-right" href="/pages/auth/logout" > Выйти</a>
     </div>

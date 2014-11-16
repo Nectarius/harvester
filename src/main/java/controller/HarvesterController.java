@@ -14,6 +14,7 @@ import view.PlainGuestView;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.security.Principal;
 
 /**
  * Created by nectarius on 11/16/13.
@@ -114,6 +115,13 @@ public class HarvesterController  {
             return guestService.findAllGuestList(eventId, pageNumber, pageSize, direction, column);
         }
 
+    }
+
+    @RequestMapping(value="/downloadGuests")
+    public void downloadGuests(@RequestParam Long eventId, @RequestParam String type,
+                         @RequestParam String token,
+                         HttpServletResponse response, Principal principal) {
+        guestService.downloadGuests(eventId, type, token, response);
     }
 
 }
