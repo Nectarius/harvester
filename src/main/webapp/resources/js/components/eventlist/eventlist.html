@@ -43,7 +43,21 @@
         </div>
         <div class="pull-right">
             <button ng-click="newevent()" class="btn btn-success">Добавить событие</button>
-            <a class="btn btn btn-info" target="_self" href="downloadEvents?type=pdf&token=58" download="test.html">Скачай отчёт</a>
+            <div class="btn-group">
+                <button type="button" data-toggle="dropdown" class="btn btn-info dropdown-toggle">Скачай отчёт<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a  target="_self" href="downloadEvents?eventId={{eventId}}&type=pdf&token=58" download="report.html">pdf</a></li>
+                    <li><a  target="_self" href="downloadEvents?eventId={{eventId}}&type=xls&token=58" download="report.html">xls</a></li>
+                    <li><a  target="_self" href="downloadEvents?eventId={{eventId}}&type=docx&token=58" download="report.html">docx</a></li>
+                    <li class="divider"></li>
+                    <li><a  target="_self" href="downloadEvents?eventId={{eventId}}&type=rtf&token=58" download="report.html">rtf</a></li>
+                    <li><a  target="_self" href="downloadEvents?eventId={{eventId}}&type=pptx&token=58" download="report.html">pptx</a></li>
+                    <li><a  target="_self" href="downloadEvents?eventId={{eventId}}&type=html&token=58" download="report.html">html</a></li>
+                    <li class="divider"></li>
+                    <li><a  target="_self" href="downloadEvents?eventId={{eventId}}&type=text&token=58" download="report.html">text</a></li>
+                    <li><a  target="_self" href="downloadEvents?eventId={{eventId}}&type=xml&token=58" download="report.html">xml</a></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

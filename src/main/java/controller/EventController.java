@@ -107,7 +107,7 @@ public class EventController {
     public void download(@RequestParam String type,
                          @RequestParam String token,
                          HttpServletResponse response, Principal principal) {
-        eventService.downloadEvents(type, token, response);
+        eventService.downloadEvents(principal.getName(),  type, token, response);
     }
 
 

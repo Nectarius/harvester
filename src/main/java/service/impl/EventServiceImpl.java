@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import repository.EventRepository;
 import repository.GuestRepository;
+import service.AccountService;
 import service.EventService;
 import service.report.ExporterService;
 import view.*;
@@ -24,6 +25,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -41,6 +43,9 @@ public class EventServiceImpl implements EventService {
     @Autowired
     private PlainEventViewMapper plainEventViewMapper;
 
+    @Autowired
+    private AccountService accountService;
+
     private final static org.slf4j.Logger LOGGER = LoggerFactory.getLogger(EventServiceImpl.class.getName());
 
     @Autowired
@@ -57,7 +62,7 @@ public class EventServiceImpl implements EventService {
     }
 
     @Override
-    public void downloadEvents(String type, String token, HttpServletResponse response) {
+    public void downloadEvents(String author, String type, String token, HttpServletResponse response) {
 
             try {
                 // 1. Add report parameters
@@ -75,9 +80,18 @@ public class EventServiceImpl implements EventService {
 
                 // 5. Create the JasperPrint object
                 // Make sure to pass the JasperReport, report parameters, and data source
-                List<PlainEventView> notes = findAllEvents();
 
-                JasperPrint jp = JasperFillManager.fillReport(jr, params, new JRBeanCollectionDataSource(notes));
+                PlainAccountView accountView = accountService.findByLogin(author);
+
+                List<PlainAccountView> accountViews = new ArrayList<PlainAccountView>();
+
+                accountViews.add(accountView);
+
+                List<PlainEventView> events = findAllEvents();
+
+                params.put("eventsDataSource", new JRBeanCollectionDataSource(events));
+
+                JasperPrint jp = JasperFillManager.fillReport(jr, params, new JRBeanCollectionDataSource(accountViews));
 
                 // 6. Create an output byte stream where data will be written
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();

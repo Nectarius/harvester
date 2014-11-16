@@ -18,6 +18,6 @@ public interface EventService {
 
     PlainEventView findOne(Long eventId);
 
-    void downloadEvents(String type, String token, HttpServletResponse response);
+    void downloadEvents(String author, String type, String token, HttpServletResponse response);
 
 }
