@@ -8,7 +8,7 @@ angular.module('newguest', ['ngResource','guest'])
         $scope.fill = function (guest) {
             guest.name = "";
             guest.surname = "";
-        }
+        };
 
         $scope.guest.statusList = [
             {name:'Видимо да', value:'PROMISED'},
@@ -52,6 +52,6 @@ angular.module('newguest', ['ngResource','guest'])
                 else
                     alert('Произошла неизвестная ошибка');
             });
-        }
+        };
 
     });

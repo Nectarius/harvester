@@ -37,8 +37,25 @@ table.table thead .sorting_desc_disabled {
 
 .input-group-addon {
 
-    min-width: 150px;
-    text-align: left;
 
 }
+
+.asterisk:before {
+    content: "* ";
+    color: #ed9c28;
+}
+
+.empty:before {
+    content: "* ";
+    color: #269abc;
+}
+
+.error-label {
+    background: #e1edf7;
+    color : #ed9c28;
+}
+
+
+
+
 
