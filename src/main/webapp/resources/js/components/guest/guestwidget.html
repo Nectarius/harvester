@@ -1,18 +1,18 @@
 <div ng-form name="form" >
 <div  class="input-group input-group-lg ">
-    <span class="input-group-addon eLabel" ng-class="{'asterisk': form.name.$error.required, 'empty': !form.name.$error.required}">Имя</span>
+    <span class="input-group-addon eLabel" ng-class="{'asterisk': form.name.$error.required, 'compliance': !form.name.$error.required}">Имя</span>
     <input type="text" class="form-control " name = "name" placeholder="Имя" ng-model="model.name"  ng-maxlength="25" required>
     <span class="input-group-addon eLabel error-label" ng-show="form.name.$error.maxlength">Слишком длинное</span>
 </div>
 </p>
 <div class="input-group input-group-lg ">
-    <span class="input-group-addon eLabel" ng-class="{'asterisk': form.surname.$error.required, 'empty': !form.surname.$error.required}">Фамилия</span>
+    <span class="input-group-addon eLabel" ng-class="{'asterisk': form.surname.$error.required, 'compliance': !form.surname.$error.required}">Фамилия</span>
     <input type="text" class="form-control " name = "surname" placeholder="Фамилия" ng-model="model.surname" ng-maxlength="25" required>
     <span class="input-group-addon eLabel error-label" ng-show="form.surname.$error.maxlength">Слишком длинное</span>
 </div>
 </p>
 <div class="input-group input-group-lg ">
-    <span class="input-group-addon eLabel" ng-class="{'asterisk': form.status.$error.required, 'empty': !form.status.$error.required}">Статус</span>
+    <span class="input-group-addon eLabel" ng-class="{'asterisk': form.status.$error.required, 'compliance': !form.status.$error.required}">Статус</span>
     <select class="form-control " name = "status" ng-model="model.status" ng-options="color.name for color in model.statusList" required></select>
 </div>
 </p>
