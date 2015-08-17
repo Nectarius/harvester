@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import service.EventService;
 import view.PageEventView;
 import view.PlainEventView;
-
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.security.Principal;
@@ -30,8 +29,6 @@ public class EventController {
 
     @RequestMapping(value = "/events", method = RequestMethod.GET)
     public String getEventPage() {
-
-
         return "events";
     }
 
@@ -42,11 +39,8 @@ public class EventController {
     @RequestMapping(value = {"/event/{id}.data"}, method = RequestMethod.GET)
     @ResponseBody
     public PlainEventView findEvent(@PathVariable("id") Long id) {
-
         PlainEventView plainEventView = eventService.findOne(id);
-
         return plainEventView;
-
     }
 
     /**
@@ -57,7 +51,6 @@ public class EventController {
      */
     @RequestMapping(value = {"/event/remove/{id}.data"}, method = RequestMethod.DELETE)
     public ResponseEntity<String> removeEvent(@PathVariable("id") Long id) {
-
         if (id != null) {
             eventService.deleteEvent(id);
             return new ResponseEntity<String>(HttpStatus.OK);
@@ -65,7 +58,6 @@ public class EventController {
             LOGGER.warn("Request event id is null");
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
         }
-
     }
 
     /**
@@ -77,7 +69,6 @@ public class EventController {
      */
     @RequestMapping(value = {"/event/save.data"}, method = RequestMethod.POST)
     public ResponseEntity<String> saveEvent(@Valid @RequestBody PlainEventView EventView, BindingResult result) {
-
         if (result.hasErrors()) {
             LOGGER.info("incorrect data: {}", result.getAllErrors());
             return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
@@ -85,7 +76,6 @@ public class EventController {
             eventService.saveOrUpdateEvent(EventView);
             return new ResponseEntity<String>(HttpStatus.OK);
         }
-
     }
 
     /**
@@ -97,10 +87,9 @@ public class EventController {
      */
     @RequestMapping(value = "eventlist/{pageNumber}/{pageSize}/{direction}/sortBy{column}.data", method = RequestMethod.GET)
     @ResponseBody
-    public PageEventView findEventList(@PathVariable("pageNumber") Integer pageNumber, @PathVariable("pageSize") Integer pageSize, @PathVariable("direction") String direction, @PathVariable("column") String column) {
-
+    public PageEventView findEventList(@PathVariable("pageNumber") Integer pageNumber,
+    @PathVariable("pageSize") Integer pageSize, @PathVariable("direction") String direction, @PathVariable("column") String column) {
         return eventService.findAllEventList(pageNumber, pageSize, direction, column);
-
     }
 
     @RequestMapping(value="/downloadEvents")
@@ -109,8 +98,4 @@ public class EventController {
                          HttpServletResponse response, Principal principal) {
         eventService.downloadEvents(principal.getName(),  type, token, response);
     }
-
-
-
-
 }
